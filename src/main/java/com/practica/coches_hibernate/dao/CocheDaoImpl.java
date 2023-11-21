@@ -1,12 +1,12 @@
 package com.practica.coches_hibernate.dao;
 
 
-import com.practica.coches_hibernate.model.Coche;
+import com.practica.coches_hibernate.model.Coches;
 import com.practica.coches_hibernate.util.HibertaneConf;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import javax.naming.Referenceable;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class CocheDaoImpl implements CocheDao {
  */
 
 	@Override
-	public void saveCoche(Coche coche) {
+	public void saveCoche(Coches coche) {
 		Transaction transaction = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
@@ -99,12 +99,12 @@ public class CocheDaoImpl implements CocheDao {
 	}
 
 	@Override
-	public Coche getCocheById(int id) {
+	public Coches getCocheById(int id) {
 		Transaction transaction = null;
-		Coche coche = null;
+		Coches coche = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			coche = session.get(Coche.class, id);
+			coche = session.get(Coches.class, id);
 			transaction.commit();
 
 
@@ -117,25 +117,25 @@ public class CocheDaoImpl implements CocheDao {
 	}
 
 	@Override
-	public List<Coche> getCocheByMatricula(String matricula) {
+	public List<Coches> getCocheByMatricula(String matricula) {
 		Transaction transaction = null;
-		List<Coche> coche = null;
+		List<Coches> coches = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			coche = session.createQuery("from coches where matricula like '"+matricula+"'").list();
+			coches = session.createQuery("from Coches where matricula like '"+matricula+"'").list();
 			transaction.commit();
 
 		} catch (Exception e) {
 			if(transaction != null)
 				transaction.rollback();
 		}
-		return coche;
+		return coches;
 	}
 
 	@Override
-	public List<Coche> getAllCoches() {
+	public List<Coches> getAllCoches() {
 		Transaction transaction = null;
-		List<Coche> coches = null;
+		List coches = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
 			coches = session.createQuery("from Coches").list();
@@ -149,7 +149,7 @@ public class CocheDaoImpl implements CocheDao {
 	}
 
 	@Override
-	public void updateCoche(Coche coche) {
+	public void updateCoche(Coches coche) {
 		Transaction transaction = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
@@ -168,7 +168,7 @@ public class CocheDaoImpl implements CocheDao {
 		Transaction transaction = null;
 		try(Session session = factory.openSession()) {
 			transaction = session.beginTransaction();
-			Coche coche = session.get(Coche.class, id);
+			Coches coche = session.get(Coches.class, id);
 			session.delete(coche);
 			transaction.commit();
 		} catch (Exception e) {

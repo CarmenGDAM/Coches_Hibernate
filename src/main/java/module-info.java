@@ -7,6 +7,7 @@ module com.practica.coches_hibernate {
     requires org.kordamp.bootstrapfx.core;
     requires org.hibernate.orm.core;
     requires java.persistence;
+    requires java.naming;
 
     opens com.practica.coches_hibernate to javafx.fxml;
     exports com.practica.coches_hibernate;

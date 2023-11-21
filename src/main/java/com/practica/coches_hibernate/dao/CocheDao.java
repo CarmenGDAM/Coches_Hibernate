@@ -1,20 +1,20 @@
 package com.practica.coches_hibernate.dao;
 
 
-import com.practica.coches_hibernate.model.Coche;
+import com.practica.coches_hibernate.model.Coches;
 
 import java.util.List;
 
 public interface CocheDao {
 	
-	void saveCoche(Coche coche);
+	void saveCoche(Coches coche);
 
-	Coche getCocheById(int id);
-	List <Coche> getCocheByMatricula(String matricula);
+	Coches getCocheById(int id);
+	List <Coches> getCocheByMatricula(String matricula);
 
-	List<Coche> getAllCoches();
+	List<Coches> getAllCoches();
 
-	void updateCoche(Coche user);
+	void updateCoche(Coches user);
 
 	void deleteCocheById(int id);
 

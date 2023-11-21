@@ -1,7 +1,7 @@
 package com.practica.coches_hibernate.util;
 
 
-import com.practica.coches_hibernate.model.Coche;
+import com.practica.coches_hibernate.model.Coches;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -26,7 +26,7 @@ public class HibertaneConf {
             // Configuracion de Hibernate equivalente al fichero de propiedades  hibernate.cfg.xml's
             Properties settings = new Properties();
             settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-            settings.put(Environment.URL, "jdbc:mysql://localhost:3306/tutorial");
+            settings.put(Environment.URL, "jdbc:mysql://localhost:3306/Taller");
             settings.put(Environment.USER, "root");
             settings.put(Environment.PASS, "toor");
 
@@ -35,7 +35,7 @@ public class HibertaneConf {
             settings.put(Environment.HBM2DDL_AUTO, "update");
 
             configuration.setProperties(settings);
-            configuration.addAnnotatedClass(Coche.class);
+            configuration.addAnnotatedClass(Coches.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
