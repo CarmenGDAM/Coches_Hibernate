@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CochesController implements Initializable {
+public class CochesController {
 
     @FXML
     private Button btCancelar;
@@ -45,16 +45,20 @@ public class CochesController implements Initializable {
 
     @FXML
     private TextField tfModelo;
-    private CocheDao cocheDI = new CocheDaoImpl();
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Coches> coches = cocheDI.getAllCoches();
-        lvCoches.setItems(FXCollections.observableList(coches));
-
-        String[] tipos = new String[]{"<Selecciona tipo>", "Familiar", "Monovolumen", "Deportivo", "SUV"};
-        cbTipo.setItems(FXCollections.observableArrayList(tipos));
-
-    }
+    //private CocheDaoImpl cocheDI = new CocheDaoImpl();
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        try{
+//            List<Coches> coches = cocheDI.getAllCoches();
+//            lvCoches.setItems(FXCollections.observableList(coches));
+//
+//            String[] tipos = new String[]{"<Selecciona tipo>", "Familiar", "Monovolumen", "Deportivo", "SUV"};
+//            cbTipo.setItems(FXCollections.observableArrayList(tipos));
+//        } catch(Exception ex){
+//            ex.getMessage();
+//        }
+//
+//    }
 
     @FXML
     void anyadirCoche(ActionEvent event) {
